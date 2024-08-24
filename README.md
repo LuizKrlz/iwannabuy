@@ -1,5 +1,7 @@
 # I Wanna Buy - Mobile APP
 
+![Test Pipeline](https://github.com/luizkrlz/iwannabuy/actions/workflows/development.yml/badge.svg)
+
 ---
 
 ## Description
