@@ -4,25 +4,33 @@
   "main": "expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "lint": "eslint .",
-    "test": "jest --watchAll",
-    "testFinal": "jest"
+    "test": "jest --watchAll --runInBand --detectOpenHandles",
+    "testFinal": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
+    "@shopify/restyle": "^2.4.4",
+    "@tanstack/react-query": "^5.52.1",
+    "axios": "^1.7.5",
     "expo": "~51.0.28",
+    "expo-image": "~1.12.15",
     "expo-status-bar": "~1.12.1",
+    "lottie-react-native": "6.7.0",
     "react": "18.2.0",
     "react-native": "0.74.5",
     "react-native-safe-area-context": "4.10.5",
-    "react-native-screens": "3.31.1"
+    "react-native-screens": "3.31.1",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@faker-js/faker": "^8.4.1",
     "@testing-library/react-native": "^12.6.0",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.2.45",
@@ -38,6 +46,10 @@
   "private": true,
   "jest": {
     "preset": "jest-expo",
+    "modulePathIgnorePatterns": [
+      "utils",
+      "__mocks__"
+    ],
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg)"
     ]
