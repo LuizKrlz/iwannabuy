@@ -9,17 +9,13 @@ import { Typography } from "../atoms/Typography";
 import { ButtonBasket } from "./ButtonBasket";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-type THeaderListProducts = {
+type THeader = {
   isScrolling: boolean;
   handleGoToCart?: () => void;
   handleGoBack?: () => void;
 };
 
-export function HeaderListProducts({
-  isScrolling,
-  handleGoToCart,
-  handleGoBack,
-}: THeaderListProducts) {
+export function Header({ isScrolling, handleGoToCart, handleGoBack }: THeader) {
   const theme = useTheme<Theme>();
 
   const insets = useSafeAreaInsets();
@@ -30,7 +26,7 @@ export function HeaderListProducts({
       <Box
         p="s"
         bg={isScrolling ? "grayLight" : "bg"}
-        testID="header_list_products_container"
+        testID="header_container"
         style={[
           { paddingTop: insets.top, paddingBottom: theme.spacing.l },
           isScrolling && {
@@ -46,7 +42,7 @@ export function HeaderListProducts({
         justifyContent="space-between"
       >
         {handleGoBack && (
-          <Pressable onPress={handleGoBack}>
+          <Pressable testID="header_back" onPress={handleGoBack}>
             <AntDesign name="arrowleft" size={24} color={theme.colors.gray} />
           </Pressable>
         )}
