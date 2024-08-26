@@ -6,9 +6,10 @@ import fallbackImage from "./default-fallback-image.png";
 type TImageWithFallback = {
   uri: string;
   testId?: string;
+  height?: number;
 };
 
-export function ImageWithFallback({ uri, testId }: TImageWithFallback) {
+export function ImageWithFallback({ uri, testId, height }: TImageWithFallback) {
   const [source, setSource] = useState({ uri, isAnimated: true });
 
   return (
@@ -21,7 +22,7 @@ export function ImageWithFallback({ uri, testId }: TImageWithFallback) {
       transition={1000}
       style={{
         width: "100%",
-        height: 180,
+        height,
       }}
     />
   );
