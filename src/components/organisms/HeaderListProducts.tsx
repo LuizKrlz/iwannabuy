@@ -1,4 +1,4 @@
-import { Platform } from "react-native";
+import { Platform, Pressable } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTheme } from "@shopify/restyle";
 import { StatusBar } from "expo-status-bar";
@@ -7,15 +7,18 @@ import { Box } from "../atoms/Box";
 import { Theme } from "../../styles/theme";
 import { Typography } from "../atoms/Typography";
 import { ButtonBasket } from "./ButtonBasket";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 type THeaderListProducts = {
   isScrolling: boolean;
-  handleGoToCart: () => void;
+  handleGoToCart?: () => void;
+  handleGoBack?: () => void;
 };
 
 export function HeaderListProducts({
   isScrolling,
   handleGoToCart,
+  handleGoBack,
 }: THeaderListProducts) {
   const theme = useTheme<Theme>();
 
@@ -42,7 +45,19 @@ export function HeaderListProducts({
         alignItems="center"
         justifyContent="space-between"
       >
-        <Typography variant="header" fontWeight={"600"} color={"secondary"}>
+        {handleGoBack && (
+          <Pressable onPress={handleGoBack}>
+            <AntDesign name="arrowleft" size={24} color={theme.colors.gray} />
+          </Pressable>
+        )}
+        <Typography
+          textAlign="left"
+          ml="m"
+          style={{ flex: 1 }}
+          variant="header"
+          fontWeight={"600"}
+          color={"secondary"}
+        >
           I Wanna Buy
         </Typography>
 
