@@ -1,5 +1,4 @@
 import { Pressable } from "react-native";
-import LottieView from "lottie-react-native";
 import { Typography } from "../../atoms/Typography";
 import { Box } from "../../atoms/Box";
 
