@@ -21,7 +21,7 @@ type TCartStore = {
   totalItens: number;
   clearCart: () => void;
   addItem: (product: TProduct) => void;
-  removeItem: (product: TProduct) => void;
+  removeItem: (id: number) => void;
   existsInCart: (product: TProduct) => TCartItem | undefined;
   clearAnimationCart(): void;
   itemSelected?: number;
@@ -47,9 +47,9 @@ export const useCartStore = create<TCartStore>((set, get) => ({
       };
     }),
   clearCart: () => set({ cart: [], total: 0 }),
-  removeItem: (product: TProduct) =>
+  removeItem: (id: number) =>
     set((state) => {
-      const cartUpdated = state.cart.filter((item) => item.id !== product.id);
+      const cartUpdated = state.cart.filter((item) => item.id !== id);
       return {
         cart: cartUpdated,
         total: calculateTotal(cartUpdated),
