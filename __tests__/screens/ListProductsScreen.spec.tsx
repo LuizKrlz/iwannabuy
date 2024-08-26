@@ -138,7 +138,7 @@ describe("Screens ListProductsScreen", () => {
 
       const buttonRemove = screen.getByTestId("card_product_button");
 
-      act(() => fireEvent.press(buttonRemove));
+      fireEvent.press(buttonRemove);
 
       waitFor(() => {
         expect(screen.getByTestId("total_itens_text").props.children).toBe(0);

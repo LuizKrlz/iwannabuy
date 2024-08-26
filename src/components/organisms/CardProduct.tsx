@@ -46,7 +46,6 @@ export function CardProduct({
       </Box>
       <CardProductButton
         isDisabled={isDisabled}
-        isLoading={isDisabled}
         onPress={handlePressButton}
         alreadyAdded={alreadyAdded}
       />
