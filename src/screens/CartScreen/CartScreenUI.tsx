@@ -1,12 +1,12 @@
 import { FlatList } from "react-native";
-import { HeaderListProducts } from "../../components/organisms/HeaderListProducts";
+import { useTheme } from "@shopify/restyle";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Header } from "../../components/organisms/Header";
 import { ProductListItem } from "../../components/organisms/ProductListItem";
 import { TCartScreenUIProps } from "./types";
 import { Box } from "../../components/atoms/Box";
-import { useTheme } from "@shopify/restyle";
 import { Theme } from "../../styles/theme";
 import { Typography } from "../../components/atoms/Typography";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { currencyFormat } from "../../utils/numbersFormat";
 
 export function CartScreenUI({
@@ -21,13 +21,14 @@ export function CartScreenUI({
 
   return (
     <Box bg="bg" flex={1}>
-      <HeaderListProducts isScrolling={false} handleGoBack={handleGoBack} />
+      <Header isScrolling={false} handleGoBack={handleGoBack} />
       <Box px="m" pb="m">
         <Typography variant="titleTwo" fontWeight={500} color="black">
           {totalItens} produtos adicionados:
         </Typography>
       </Box>
       <FlatList
+        testID="cart_list_products"
         style={{ flex: 1 }}
         data={cart}
         keyExtractor={(item) => item.id.toString()}
