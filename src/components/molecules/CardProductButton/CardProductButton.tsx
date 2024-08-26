@@ -27,7 +27,9 @@ export function CardProductButton({
         justifyContent="center"
         height={50}
       >
-        <Typography>{alreadyAdded ? "Remove" : "Add"}</Typography>
+        <Typography color={alreadyAdded ? "red" : "blue"}>
+          {alreadyAdded ? "Remove" : "Add"}
+        </Typography>
       </Box>
     </Pressable>
   );
