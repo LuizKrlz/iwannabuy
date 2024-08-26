@@ -28,7 +28,7 @@ export function CardProduct({
       overflow="hidden"
     >
       {product.images && product.images.length && (
-        <ImageWithFallback uri={product.images[0]} />
+        <ImageWithFallback uri={product.images[0]} height={180} />
       )}
       <Box p="s" flex={1} maxHeight={100} justifyContent="space-between">
         <Typography
