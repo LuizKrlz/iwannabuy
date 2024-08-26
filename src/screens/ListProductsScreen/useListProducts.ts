@@ -1,7 +1,7 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useCartStore } from "../../store/cart";
 import { useGetProductsInfinityQuery } from "../../integration/products/hooks";
-import { NativeScrollEvent, NativeSyntheticEvent } from "react-native";
+import { Alert, NativeScrollEvent, NativeSyntheticEvent } from "react-native";
 import { TProduct } from "../../integration/products/types";
 import { TListProductsScreen } from "./types";
 
@@ -12,7 +12,7 @@ export function useListProductsScreen({ navigation }: TListProductsScreen) {
     navigation?.navigate("cart");
   };
 
-  const { data } = useGetProductsInfinityQuery();
+  const { data, isError } = useGetProductsInfinityQuery();
 
   const { addItem, showAnimationCart, existsInCart, removeItem, itemSelected } =
     useCartStore();
@@ -46,6 +46,12 @@ export function useListProductsScreen({ navigation }: TListProductsScreen) {
     },
     [removeItem, addItem]
   );
+
+  useEffect(() => {
+    if (isError) {
+      Alert.alert("Ops", "Não foi possível carregar os produtos");
+    }
+  }, [isError]);
 
   return {
     isScrolling,
