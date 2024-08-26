@@ -18,6 +18,12 @@ const initialMetrics = {
 
 const queryClient = new QueryClient();
 
+export const wrapper = ({ children }: { children: JSX.Element }) => {
+  return (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
+};
+
 export function renderWithTheme(component: JSX.Element) {
   return render(
     <SafeAreaProvider initialMetrics={initialMetrics}>
@@ -46,5 +52,27 @@ export function createAProduct(): TProduct {
     title: faker.lorem.word(),
     creationAt: faker.date.recent().toString(),
     updatedAt: faker.date.recent().toString(),
+  };
+}
+
+export function getMockNavigation() {
+  return {
+    addListener: jest.fn(),
+    dispatch: jest.fn(),
+    goBack: jest.fn(),
+    navigate: jest.fn(),
+    replace: jest.fn(),
+    reset: jest.fn(),
+    setOptions: jest.fn(),
+    setParams: jest.fn(),
+    canGoBack: jest.fn(),
+    getId: jest.fn(),
+    getParent: jest.fn(),
+    getState: jest.fn(),
+    isFocused: jest.fn(),
+    pop: jest.fn(),
+    popToTop: jest.fn(),
+    push: jest.fn(),
+    removeListener: jest.fn(),
   };
 }
