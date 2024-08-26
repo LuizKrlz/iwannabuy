@@ -1,3 +1,4 @@
+import { Alert } from "react-native";
 import { useCartStore } from "../../store/cart";
 import { TCartScreen } from "./types";
 
@@ -6,12 +7,17 @@ export function useCartScreen({ navigation }: TCartScreen) {
 
   const handleGoBack = () => navigation.goBack();
 
-  /**
-   * @TODO
-   * Ajustar comportamento
-   */
   const handlePressOnDelete = (id: number) => {
-    removeItem(id);
+    Alert.alert("Atenção", "Deseja realmente remover esse produto?", [
+      {
+        text: "Cancelar",
+        style: "cancel",
+      },
+      {
+        text: "Remover",
+        onPress: () => removeItem(id),
+      },
+    ]);
   };
 
   return {
