@@ -39,7 +39,7 @@ export function useListProductsScreen({ navigation }: TListProductsScreen) {
   const handlePressInProduct = useCallback(
     (exists = false, product: TProduct): void => {
       if (exists) {
-        removeItem(product);
+        removeItem(product.id);
       } else {
         addItem(product);
       }
