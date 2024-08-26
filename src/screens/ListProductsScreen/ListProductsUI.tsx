@@ -2,9 +2,10 @@ import { FlatList } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTheme } from "@shopify/restyle";
 import { Theme } from "../../styles/theme";
-import { HeaderListProducts } from "../../components/organisms/HeaderListProducts";
+import { Header } from "../../components/organisms/Header";
 import { CardProduct } from "../../components/organisms/CardProduct";
 import { useListProductsScreen } from "./useListProducts";
+import { EmptyListProducts } from "../../components/molecules/EmptyListProducts";
 
 export function ListProductsUI({
   isScrolling,
@@ -31,11 +32,9 @@ export function ListProductsUI({
       keyExtractor={(item) => item.id.toString()}
       data={list}
       ListHeaderComponent={() => (
-        <HeaderListProducts
-          handleGoToCart={handleGoToCart}
-          isScrolling={isScrolling}
-        />
+        <Header handleGoToCart={handleGoToCart} isScrolling={isScrolling} />
       )}
+      ListEmptyComponent={() => <EmptyListProducts />}
       onScroll={listenerOnScroll}
       renderItem={({ item }) => {
         const findInCart = existsInCart(item);
