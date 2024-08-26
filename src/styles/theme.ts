@@ -13,6 +13,8 @@ const theme = createTheme({
     black: palette.black,
     gray: palette.gray,
     grayLight: palette.grayLight,
+    red: palette.red,
+    blue: palette.blue,
     title: palette.secondary,
     text: palette.gray,
     card: palette.grayExtraLight,

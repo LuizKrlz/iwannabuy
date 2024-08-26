@@ -9,4 +9,6 @@ export default {
   gray: "#6A6A6A",
   grayLight: "#F5F5F5",
   grayExtraLight: "#F3F4F6",
+  red: "#AF1B3F",
+  blue: "#228CDB",
 };
