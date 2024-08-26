@@ -5,7 +5,7 @@ import { useCartStore } from "../../../store/cart";
 import { Box } from "../../atoms/Box";
 
 type TButtonBasket = {
-  onPress(): void;
+  onPress?(): void;
 };
 
 export function ButtonBasket({ onPress }: TButtonBasket) {
@@ -30,7 +30,7 @@ export function ButtonBasket({ onPress }: TButtonBasket) {
   });
 
   return (
-    <Pressable testID="button_basket" onPress={onPress}>
+    <Pressable testID="button_basket" onPress={onPress ? onPress : () => {}}>
       <Box position="relative">
         <LottieView
           testID="lottie_view"
