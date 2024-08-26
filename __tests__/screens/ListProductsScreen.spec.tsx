@@ -1,7 +1,7 @@
 import { act, fireEvent, waitFor } from "@testing-library/react-native";
 
 import { ListProductsScreen } from "../../src/screens/ListProductsScreen";
-import { createAProduct, renderWithTheme } from "../utils";
+import { createAProduct, getMockNavigation, renderWithTheme } from "../utils";
 
 import * as hooks from "../../src/integration/products/hooks";
 import { useCartStore } from "../../src/store/cart";
@@ -12,6 +12,8 @@ jest.mock("@tanstack/react-query", () => {
     useInfiniteQuery: jest.fn(),
   };
 });
+
+const navigationMock = getMockNavigation();
 
 describe("Screens ListProductsScreen", () => {
   it("should render correctly", () => {
@@ -25,9 +27,17 @@ describe("Screens ListProductsScreen", () => {
         pages: [[product]],
       },
     } as any);
-    const screen = renderWithTheme(<ListProductsScreen />);
+    const screen = renderWithTheme(
+      <ListProductsScreen
+        navigation={navigationMock}
+        route={{
+          key: "",
+          name: "products",
+        }}
+      />
+    );
 
-    expect(screen.getByTestId("header_list_products_container")).toBeTruthy();
+    expect(screen.getByTestId("header_container")).toBeTruthy();
 
     jest.clearAllMocks();
   });
@@ -35,9 +45,6 @@ describe("Screens ListProductsScreen", () => {
   it("should be possible to render a list of product", () => {
     const product = createAProduct();
 
-    /**
-     * @TODO figure out mock
-     */
     jest.spyOn(hooks, "useGetProductsInfinityQuery").mockReturnValue({
       data: {
         pageParams: [],
@@ -45,7 +52,15 @@ describe("Screens ListProductsScreen", () => {
       },
     } as any);
 
-    const screen = renderWithTheme(<ListProductsScreen />);
+    const screen = renderWithTheme(
+      <ListProductsScreen
+        navigation={navigationMock}
+        route={{
+          key: "",
+          name: "products",
+        }}
+      />
+    );
 
     waitFor(() => {
       expect(screen.getByText(product.title)).toBeTruthy();
@@ -67,7 +82,15 @@ describe("Screens ListProductsScreen", () => {
       },
     } as any);
 
-    const screen = renderWithTheme(<ListProductsScreen />);
+    const screen = renderWithTheme(
+      <ListProductsScreen
+        navigation={navigationMock}
+        route={{
+          key: "",
+          name: "products",
+        }}
+      />
+    );
 
     const button = screen.getByTestId("card_product_button");
 
@@ -99,7 +122,16 @@ describe("Screens ListProductsScreen", () => {
       const mockFn = jest.fn();
 
       const screen = renderWithTheme(
-        <ListProductsScreen navigation={{ navigate: mockFn }} />
+        <ListProductsScreen
+          navigation={{
+            ...navigationMock,
+            navigate: mockFn,
+          }}
+          route={{
+            key: "",
+            name: "products",
+          }}
+        />
       );
 
       const buttonBasket = screen.getByTestId("button_basket");
@@ -122,7 +154,15 @@ describe("Screens ListProductsScreen", () => {
         },
       } as any);
 
-      const screen = renderWithTheme(<ListProductsScreen />);
+      const screen = renderWithTheme(
+        <ListProductsScreen
+          navigation={navigationMock}
+          route={{
+            key: "",
+            name: "products",
+          }}
+        />
+      );
 
       act(() => useCartStore.getState().clearCart());
 
