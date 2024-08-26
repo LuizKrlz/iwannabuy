@@ -23,6 +23,7 @@ export function ListProductsUI({
     <FlatList
       numColumns={2}
       stickyHeaderIndices={[0]}
+      showsVerticalScrollIndicator={false}
       contentContainerStyle={{
         paddingBottom: insets.bottom + theme.spacing.m,
         paddingHorizontal: theme.spacing.s,
