@@ -8,7 +8,8 @@ export function useGetProductsInfinityQuery() {
     queryFn: getProducts,
     initialPageParam: 0,
     getNextPageParam: (lastPage, _, lastPageParam) => {
-      return lastPage.length < 200 ? lastPageParam + 1 : undefined;
+      const nextParam = lastPageParam + 10;
+      return nextParam < 50 ? nextParam : undefined;
     },
   });
 }
