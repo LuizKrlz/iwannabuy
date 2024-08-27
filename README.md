@@ -10,7 +10,9 @@ This is a React Native project built using Expo. It serves as a challenge to sho
 
 ## Preview
 
-- [![Watch the video](./preview.mov)](./preview.mov)
+<video width="320" height="500" controls>
+  <source src="/preview.mp4" type="video/mp4">
+</video>
 
 ## Initial Setup
 
