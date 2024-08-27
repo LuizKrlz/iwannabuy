@@ -12,17 +12,15 @@ export function useListProductsScreen({ navigation }: TListProductsScreen) {
     navigation?.navigate("cart");
   };
 
-  const { data, isError } = useGetProductsInfinityQuery();
+  const { data, isError, fetchNextPage, isFetching } =
+    useGetProductsInfinityQuery();
 
   const { addItem, showAnimationCart, existsInCart, removeItem, itemSelected } =
     useCartStore();
 
   const list = useMemo(
-    () =>
-      data?.pages.reduce((acc, page) => {
-        return [...acc, ...page];
-      }),
-    [data]
+    () => data?.pages.reduce((acc, item) => [...acc, ...item]) || [],
+    [data?.pages]
   );
 
   const listenerOnScroll = useCallback(
@@ -59,8 +57,10 @@ export function useListProductsScreen({ navigation }: TListProductsScreen) {
     handleGoToCart,
     handlePressInProduct,
     itemSelected,
+    isFetching,
     list,
     listenerOnScroll,
     showAnimationCart,
+    fetchNextPage,
   };
 }
