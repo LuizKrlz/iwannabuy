@@ -8,6 +8,10 @@
 
 This is a React Native project built using Expo. It serves as a challenge to show knowledge in React Native and create a simple e-commerce with a list of products and a cart. The project is structured to allow for easy development, testing, and deployment.
 
+## Preview
+
+- [![Watch the video](./preview.mov)](./preview.mov)
+
 ## Initial Setup
 
 Before running the project, ensure you have Node.js and npm installed. After that, now you can run this command to install all dependencies:
