@@ -9,10 +9,7 @@
 This is a React Native project built using Expo. It serves as a challenge to show knowledge in React Native and create a simple e-commerce with a list of products and a cart. The project is structured to allow for easy development, testing, and deployment.
 
 ## Preview
-
-<video width="320" height="500" controls>
-  <source src="/preview.mp4" type="video/mp4">
-</video>
+https://github.com/user-attachments/assets/b28f768e-f573-4ff5-875d-9ca2296f2f9a
 
 ## Initial Setup
 
